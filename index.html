@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Financial Clarity Pro</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        :root {
+            --primary-color: #0052cc;
+            --secondary-color: #007bff;
+            --accent-color: #ffc107;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --bg-light: #f8f9fa;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0f7fa, #d1c4e9);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 0 0 50% 50% / 0 0 10% 10%;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header h2 {
+            font-size: 1.5em;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-image: linear-gradient(45deg, #ffc107, #ff9800);
+            color: #fff;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1.3em;
+            margin-top: 20px;
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(255, 193, 7, 0.4);
+        }
+        
+        .cta-button.secondary {
+             background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+             box-shadow: 0 10px 20px rgba(0, 82, 204, 0.3);
+        }
+        
+        .cta-button.secondary:hover {
+            box-shadow: 0 15px 25px rgba(0, 82, 204, 0.4);
+        }
+
+
+        section {
+            background: var(--bg-color);
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px var(--shadow-color);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-size: 2.8em;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .feature-grid, .why-african-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item, .why-african-item {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover, .why-african-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px var(--shadow-color);
+        }
+
+        .feature-item strong, .why-african-item strong {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .step-number {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+        
+        .step-content strong {
+            font-size: 1.4em;
+            color: var(--primary-color);
+        }
+
+        .testimonial-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            font-style: italic;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(0, 82, 204, 0.2);
+        }
+        
+        .testimonial::before {
+            content: '“';
+            font-size: 5em;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            text-align: right;
+            font-weight: 700;
+            margin-top: 15px;
+            font-style: normal;
+        }
+
+        .bonuses ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .bonuses li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: inline-block;
+            background: var(--bg-light);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin: 5px;
+        }
+
+        .final-cta {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        
+        .footer-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .footer-link p {
+            font-size: 1.2em;
+        }
+
+        .footer-link a {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--primary-color);
+            word-break: break-all;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+            h2.section-title {
+                font-size: 2.2em;
+            }
+            .cta-button {
+                font-size: 1.1em;
+                padding: 15px 30px;
+            }
+            section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>WELCOME TO JAMES FINANCIAL CLARITY PRO</h1>
+        <h2>J.FCP</h2>
+        <p style="font-size: 1.2em; font-weight: bold; max-width: 600px; margin: 20px auto 0;">Earn More. Trade Smarter. Withdraw Faster.</p>
+        <a href="https://one.exnesstrack.org/a/c_8uar8c9swf" class="cta-button">🔵 Start Trading Now</a>
+    </header>
+
+    <div class="container">
+        <section class="intro-section">
+             <h2 class="section-title">✅ Start Trading with Exness</h2>
+             <div style="text-align:center; font-size: 1.1em;">
+                <p>✔ Instant withdrawals | ✔ Low spreads | ✔ Regulated broker</p>
+                <p><strong>🎁 Start with as little as $10 — 0% commission on deposits!</strong></p>
+             </div>
+        </section>
+    
+        <section class="features">
+            <h2 class="section-title">🌍 Why Choose Exness?</h2>
+            <div class="feature-grid">
+                <div class="feature-item"><strong>💸 Instant Withdrawals</strong><p>Get your profits in seconds</p></div>
+                <div class="feature-item"><strong>🔥 Low Spreads</strong><p>Trade with tight spreads from 0.1 pips</p></div>
+                <div class="feature-item"><strong>📱 MT4, MT5, & WebTrader</strong><p>Trade on mobile or desktop</p></div>
+                <div class="feature-item"><strong>🔐 Regulated & Trusted</strong><p>Licensed globally</p></div>
+                <div class="feature-item"><strong>💰 Flexible Leverage</strong><p>Control your risk</p></div>
+                <div class="feature-item"><strong>🌍 Local Payment Options</strong><p>Bank transfer, USDT, M-Pesa & more</p></div>
+            </div>
+        </section>
+
+        <section class="why-african">
+            <h2 class="section-title">🌍 Why African Traders Love Exness</h2>
+            <div class="why-african-grid">
+                <div class="why-african-item"><strong>💸 Local Withdrawals</strong><p>Fast payouts via African banks & mobile money</p></div>
+                <div class="why-african-item"><strong>🧾 Low Deposit Required</strong><p>Start trading with just $10</p></div>
+                <div class="why-african-item"><strong>📉 Tight Spreads</strong><p>Low trading fees = higher profits</p></div>
+                <div class="why-african-item"><strong>🗣 24/7 Support</strong><p>Local languages available</p></div>
+                <div class="why-african-item"><strong>🔐 Globally Regulated</strong><p>Safe and secure</p></div>
+                <div class="why-african-item"><strong>📱 Trade Anywhere</strong><p>Full access to MT4, MT5 & WebTrader</p></div>
+            </div>
+        </section>
+
+        <section class="steps">
+            <h2 class="section-title">✅ How to Start in 3 Easy Steps</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1️⃣</div>
+                    <div class="step-content"><strong>Register</strong><p>Create your free Exness account using your email and password.</p></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2️⃣</div>
+                    <div class="step-content"><strong>Verify Your Identity</strong><p>Upload your ID and proof of address.</p></div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3️⃣</div>
+                    <div class="step-content"><strong>Deposit & Trade</strong><p>Fund your account with just $10 and start trading instantly.</p></div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://one.exnesstrack.org/a/c_8uar8c9swf" class="cta-button secondary">🔵 Sign Up & Start Trading</a>
+            </div>
+        </section>
+
+        <section class="trust-stats">
+            <h2 class="section-title">📊 Trusted by Traders Worldwide</h2>
+            <div class="feature-grid">
+                <div class="feature-item"><strong>500,000+</strong><p>active traders in Africa</p></div>
+                <div class="feature-item"><strong>190+</strong><p>countries available</p></div>
+                <div class="feature-item"><strong>24/7</strong><p>multilingual support</p></div>
+                <div class="feature-item"><strong>Regulated by</strong><p>CySEC, FSCA, FSA</p></div>
+            </div>
+        </section>
+
+        <section class="bonuses">
+            <h2 class="section-title">🎁 Special Bonuses When You Use My Link</h2>
+            <ul>
+                <li>✅ Free Trading Signals</li>
+                <li>✅ Beginner-Friendly PDF & Video Guides</li>
+                <li>✅ Step-by-Step Tutorials</li>
+            </ul>
+            <div class="footer-link">
+                <p>👉 Sign up with my link to get all benefits: 🫴</p>
+                <a href="https://one.exnesstrack.org/a/c_8uar8c9swf" target="_blank">https://one.exnesstrack.org/a/c_8uar8c9swf</a>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2 class="section-title">💬 Real Trader Testimonials</h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial">
+                    <p>"Exness withdrawals hit my account in minutes. No delays!"</p>
+                    <p class="testimonial-author">— Tolu A. (Nigeria)</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Started with just $10. Now I trade like a pro — thanks to Exness."</p>
+                    <p class="testimonial-author">— Sipho M. (South Africa)</p>
+                </div>
+                <div class="testimonial">
+                    <p>"I’ve used many brokers, but Exness is the fastest and most reliable."</p>
+                    <p class="testimonial-author">— Kwame B. (Ghana)</p>
+                </div>
+                <div class="testimonial">
+                    <p>"The low spreads and instant payout make Exness my #1 choice."</p>
+                    <p class="testimonial-author">— Jane E. (Kenya)</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="final-cta">
+            <a href="https://one.exnesstrack.org/a/c_8uar8c9swf" class="cta-button">🔵 Sign Up Now and Start Trading</a>
+        </div>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
